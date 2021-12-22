@@ -16,7 +16,6 @@ def main():
     	This is a Natural Language Processing(NLP) Based App useful for basic NLP task:\n
     	 - Sentiment Analysys 
     	 - Text Generation
-    	 - Named Entity Recognition (NER)
     	""")
 
     st.warning("load models... in a few minutes you can enjoy crazy models!!!")
@@ -24,8 +23,8 @@ def main():
     if 'sentiment_analysys' not in st.session_state:
         st.session_state['sentiment_analysys'] = pipeline("sentiment-analysis")
 
-    if 'ner' not in st.session_state:
-        st.session_state['ner'] = pipeline("ner", grouped_entities=True)
+    # if 'ner' not in st.session_state:
+    #     st.session_state['ner'] = pipeline("ner", grouped_entities=True)
 
     if 'text_generation' not in st.session_state:
         st.session_state['text_generation'] = pipeline("text-generation")
@@ -34,8 +33,6 @@ def main():
 
     # Sentiment Analysis
     if st.checkbox("Show Sentiment Analysis"):
-        #classifier = pipeline("sentiment-analysis", 'bert-base-uncased')
-
         message_Sentiment = st.text_area("Enter Text", key='3')
         if st.button("Analyze", key='3'):
             result_sentiment = st.session_state.sentiment_analysys(message_Sentiment)
@@ -48,12 +45,12 @@ def main():
             summary_result = st.session_state.text_generation(message, max_length=30, num_return_sequences=2)
             st.success(summary_result)
 
-    # NER
-    if st.checkbox("Show Named Entities"):
-        message = st.text_area("Enter Text", key='2')
-        if st.button("Extract", key='2'):
-            entity_result = st.session_state['ner'](message)
-            st.success(entity_result)
+    # # NER
+    # if st.checkbox("Show Named Entities"):
+    #     message = st.text_area("Enter Text", key='2')
+    #     if st.button("Extract", key='2'):
+    #         entity_result = st.session_state['ner'](message)
+    #         st.success(entity_result)
 
 
     # st.sidebar.subheader("About App")
