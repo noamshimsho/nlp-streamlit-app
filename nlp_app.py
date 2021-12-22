@@ -30,6 +30,7 @@ def main():
     if 'text_generation' not in st.session_state:
         st.session_state['text_generation'] = pipeline("text-generation")
 
+    st.success("finish download the models, ENJOY!")
 
     # Sentiment Analysis
     if st.checkbox("Show Sentiment Analysis"):
