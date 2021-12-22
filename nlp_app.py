@@ -42,7 +42,7 @@ def main():
     if st.checkbox("Show Text Generation"):
         message = st.text_area("Enter Text", key='4')
         if st.button("Generate", key='4'):
-            summary_result = st.session_state.text_generation(message, max_length=150, num_return_sequences=2)
+            summary_result = st.session_state.text_generation(message, max_length=50, num_return_sequences=2)
             st.success(summary_result)
 
     # # NER
